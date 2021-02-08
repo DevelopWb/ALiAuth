@@ -1,4 +1,4 @@
-package com.hotfix;
+package com.hotfix.utils;
 
 import android.content.Context;
 import android.util.DisplayMetrics;

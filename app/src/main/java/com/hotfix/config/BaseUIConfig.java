@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.hotfix.AppUtils;
+import com.hotfix.utils.AppUtils;
 import com.hotfix.aaa.R;
 import com.mobile.auth.gatewayauth.PhoneNumberAuthHelper;
 

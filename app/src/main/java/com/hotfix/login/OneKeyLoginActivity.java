@@ -10,10 +10,12 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import com.hotfix.utils.ExecutorManager;
 import com.hotfix.config.BaseUIConfig;
 import com.hotfix.aaa.BuildConfig;
 import com.hotfix.aaa.R;
 import com.hotfix.config.Constant;
+import com.hotfix.utils.MockRequest;
 import com.mobile.auth.gatewayauth.AuthUIConfig;
 import com.mobile.auth.gatewayauth.PhoneNumberAuthHelper;
 import com.mobile.auth.gatewayauth.ResultCode;
@@ -31,16 +33,14 @@ public class OneKeyLoginActivity extends Activity {
     private PhoneNumberAuthHelper mPhoneNumberAuthHelper;
     private TokenResultListener mTokenResultListener;
     private ProgressDialog mProgressDialog;
-    private int mUIType;
     private BaseUIConfig mUIConfig;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mUIType = getIntent().getIntExtra(Constant.THEME_KEY, -1);
         setContentView(R.layout.activity_login);
         mTvResult = findViewById(R.id.tv_result);
         sdkInit(BuildConfig.AUTH_SECRET);
-        mUIConfig = BaseUIConfig.init(mUIType, this, mPhoneNumberAuthHelper);
+        mUIConfig = BaseUIConfig.init(Constant.FULL_PORT, this, mPhoneNumberAuthHelper);
         oneKeyLogin();
     }
 
@@ -79,8 +79,8 @@ public class OneKeyLoginActivity extends Activity {
                         finish();
                     } else {
                         Toast.makeText(getApplicationContext(), "一键登录失败切换到其他登录方式", Toast.LENGTH_SHORT).show();
-                        Intent pIntent = new Intent(OneKeyLoginActivity.this, MessageActivity.class);
-                        startActivityForResult(pIntent, 1002);
+//                        Intent pIntent = new Intent(OneKeyLoginActivity.this, MessageActivity.class);
+//                        startActivityForResult(pIntent, 1002);
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -120,7 +120,7 @@ public class OneKeyLoginActivity extends Activity {
         ExecutorManager.run(new Runnable() {
             @Override
             public void run() {
-                final String result = getPhoneNumber(token);
+                final String result = MockRequest.getPhoneNumber(token);
                 OneKeyLoginActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
