@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.hotfix.aaa">
+    <uses-permission android:name="android.permission.INTERNET" />   <!-- 网络访问 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 检查wifi网络状态 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 检查网络状态 -->
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" /> <!-- 切换网络通道 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/> <!-- 本地信息缓存 -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" /> <!-- 开关wifi状态，解决国内机型移动网络权限问题需要 -->
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:usesCleartextTraffic="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!--重点关注！！！！！！！-->
+        <!--如果不需要使用窗口模式，不要使用authsdk_activity_dialog主题，会出现异常动画-->
+        <!--如果需要使用authsdk_activity_dialog主题，则screenOrientation一定不能指定明确的方向，
+        比如portrait、sensorPortrait，在8.0的系统上不允许窗口模式指定orientation，会发生crash，需要指定为behind，
+        然后在授权页的前一个页面指定具体的orientation-->
+        <!--联通电信授权⻚-->
+        <activity
+            android:name="com.mobile.auth.gatewayauth.LoginAuthActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="false"
+            android:launchMode="singleTop" />
+        <!--协议⻚⾯webview-->
+        <activity
+            android:name="com.mobile.auth.gatewayauth.activity.AuthWebVeiwActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="false"
+            android:launchMode="singleTop"
+            android:screenOrientation="behind" />
+        <!--移动授权⻚-->
+        <activity
+            android:name="com.cmic.sso.sdk.activity.LoginAuthActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="false"
+            android:launchMode="singleTop" />
+        <activity
+            android:name="com.hotfix.login.OneKeyLoginActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="sensorPortrait" />
+    </application>
+
+</manifest>

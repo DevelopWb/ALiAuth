@@ -1,0 +1,46 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion "28.0.2"
+
+    defaultConfig {
+        applicationId "com.hotfix.aaa"
+        minSdkVersion 22
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField "String", "AUTH_SECRET", '"7KHffk2Cn1j17+QVA2zbJfdDteDSUDspB/s+FUoAhyXmQ/wueAQBcpMDOVLrp5lt5BDIGxDrCuTBZk7TcR4CxAQvHnJUPIaCI5dscbBFqHgHVI8Yoy0nYwsFo8Gyd2RZ6MbUAZr3lsnPQsA+UW1MZY9EP94x0TrXmwEJkU5xJgmOJfCSekYWHP5xNc0as/aWkTmNrjFyb5//93cAMwQllH0FFEFF+GEd7XMvm6ap/g4BD8676+z29MbePXPjoY6u3VrNTMkksQHW1EolxJkw+9Sa5pDsdOrQjXBz056J79PpNAFlTvPMZw=="'
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+
+    implementation(name:'crashshield-2.0.1-release', ext:'aar')
+    implementation(name:'logger-2.0.1-release', ext:'aar')
+    implementation(name:'main-2.0.1-release', ext:'aar')
+    implementation(name:'phoneNumber-L-AuthSDK-2.12.0.1', ext:'aar')
+
+
+//    implementation project(path:':libs:crashshield-2.0.1-release')
+//    implementation project(path:':libs:logger-2.0.1-release')
+//    implementation project(path:':libs:main-2.0.1-release')
+//    implementation project(path:':libs:phoneNumber-L-AuthSDK-2.12.0.1')
+}
