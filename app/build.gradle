@@ -11,7 +11,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField "String", "AUTH_SECRET", '"7KHffk2Cn1j17+QVA2zbJfdDteDSUDspB/s+FUoAhyXmQ/wueAQBcpMDOVLrp5lt5BDIGxDrCuTBZk7TcR4CxAQvHnJUPIaCI5dscbBFqHgHVI8Yoy0nYwsFo8Gyd2RZ6MbUAZr3lsnPQsA+UW1MZY9EP94x0TrXmwEJkU5xJgmOJfCSekYWHP5xNc0as/aWkTmNrjFyb5//93cAMwQllH0FFEFF+GEd7XMvm6ap/g4BD8676+z29MbePXPjoY6u3VrNTMkksQHW1EolxJkw+9Sa5pDsdOrQjXBz056J79PpNAFlTvPMZw=="'
+        buildConfigField "String", "AUTH_SECRET", '"iYSRptupUb7mwnJcC2x+tN7lvV4RAb/Lau/hV0N5kVQugpNllN93tZOHckadYwNBfcBPFBh3FTUt3yiWzHwk5QV78Juf6mgh2f5zrtnh8rXZKhJnfrg56f6mJ0eHMUdRLG21Zo6Tb1f6G609zYwD9NutSGrOARztpKxdUXEOnzVF0ZFnU9ikEDXeI91KEdv4UY4WYIXu+YOmcd0f4PeT/ybrJKDFxCvhZkbvKt2t53kHGpemUwMAHdMNVKTpX3jmhrdKljBMiOZVxE7AHE1Ckaqq98oLqM24eGlmwQf4WoGmqZeNd9hfkw=="'
 
     }
     buildTypes {
